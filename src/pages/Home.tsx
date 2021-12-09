@@ -1,5 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonModal, IonButton } from '@ionic/react';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -16,7 +15,21 @@ const Home: React.FC = () => {
             <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        
+        Content
+        
+        <IonButton id="trigger1">Open Modal</IonButton>
+        <IonModal trigger="trigger1">
+          <IonContent>
+            Modal 1
+            <IonButton id="trigger2">Open Modal 2</IonButton>
+            <IonModal trigger="trigger2">
+              <IonContent>
+                Modal 2
+              </IonContent>
+            </IonModal>
+          </IonContent>
+        </IonModal>
       </IonContent>
     </IonPage>
   );
