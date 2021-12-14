@@ -1,12 +1,22 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonModal, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonModal, IonButton, useIonModal, IonButtons } from '@ionic/react';
+import { Modal } from '../components/Modal';
 import './Home.css';
 
 const Home: React.FC = () => {
+  const handleDismiss = () => {
+    dismiss();
+  };
+
+  const [present, dismiss] = useIonModal(Modal, { onDismiss: handleDismiss });
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Blank</IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={() => present()}>Show Modal</IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
