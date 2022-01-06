@@ -28,7 +28,7 @@ const Home: React.FC = () => {
         
         Content
         
-        <IonButton id="trigger1">Open Modal</IonButton>
+        <IonButton onClick={() => present()}>Open Modal</IonButton>
         <IonModal trigger="trigger1">
           <IonContent>
             Modal 1
