@@ -1,20 +1,23 @@
-import { IonButton, IonButtons, IonContent, IonHeader, IonModal, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonContent, IonModal, useIonModal } from "@ionic/react";
+import { Modal2 } from "./Modal2";
 
 export const Modal: React.FC<{
-  count: number;
   onDismiss: () => void;
-  onIncrement: () => void;
-}> = ({ count, onDismiss, onIncrement }) => (
-  <IonPage>
+}> = ({ onDismiss }) => {
+  const [showHookModal] = useIonModal(Modal2);
+
+  return (
     <IonContent>
       Modal 1
-      <IonButton id="trigger2">Open Modal 2</IonButton>
-      <IonModal trigger="trigger2">
+      <IonButton id="open-modal">Open Nested Modal (Inline)</IonButton>
+      <IonButton onClick={() => showHookModal()}>Open Nested Modal (Hook)</IonButton>
+      <IonButton onClick={() => onDismiss()}>Dismiss</IonButton>
+
+      <IonModal trigger="open-modal">
         <IonContent>
-          Modal 2
-          <IonButton onClick={() => onDismiss()}>Dismiss</IonButton>
+          Nested Modal (Inline)
         </IonContent>
       </IonModal>
     </IonContent>
-  </IonPage>
-);
+  )
+};
