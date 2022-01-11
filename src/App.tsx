@@ -1,7 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonButton, IonButtons, IonIcon, IonItem, IonList, IonPopover, setupIonicReact } from '@ionic/react'
-import { ellipsisVertical } from 'ionicons/icons'
-import { useState } from 'react'
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -26,38 +24,19 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App = () => {
-  const [items, setItems] = useState([1, 2, 3, 4, 5])
-  return <IonApp>
-    <IonList>
-      {items.map(item => <Item key={item} item={item} setItems={setItems} />)}
-    </IonList>
+const App: React.FC = () => (
+  <IonApp>
+    <IonReactRouter>
+      <IonRouterOutlet>
+        <Route exact path="/home">
+          <Home />
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+      </IonRouterOutlet>
+    </IonReactRouter>
   </IonApp>
-}
-
-const Item = ({ setItems, item }: { setItems: any, item: any }) => {
-  const [event, setEvent] = useState(null)
-  const [isOpen, setIsOpen] = useState(false)
-  return <IonItem>
-    item {item}
-    <IonButtons slot="end">
-      <IonButton onClick={(e) => {
-        setEvent(e as any)
-        setIsOpen(true)
-      }}>
-        <IonIcon icon={ellipsisVertical} slot="icon-only" />
-      </IonButton>
-    </IonButtons>
-    <IonPopover event={event} isOpen={isOpen}>
-      <IonItem onClick={() => {
-        setEvent(null)
-        setIsOpen(false)
-        setItems((items: any) => items.filter((i: any) => item !== i))
-      }} button>
-        remove
-      </IonItem>
-    </IonPopover>
-  </IonItem>
-}
+);
 
 export default App;
