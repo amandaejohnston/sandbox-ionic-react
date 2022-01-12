@@ -12,7 +12,7 @@ export const Item = ({ setItems, item }: any) => {
           <IonIcon icon={ellipsisVertical} slot="icon-only" />
         </IonButton>
       </IonButtons>
-      <IonPopover trigger={popoverTrigger}>
+      <IonPopover trigger={popoverTrigger} dismissOnSelect={true}>
         <IonItem onClick={() => {
           setItems((items: any[]) => items.filter(i => item !== i))
         }} button>Remove</IonItem>
