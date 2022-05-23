@@ -1,0 +1,32 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 40px;
+  grid-column-gap: 20px;
+}
+
+.grid-item {
+  margin: 0 auto;
+  text-align: center;
+}
+
+ion-content h2 {
+  font-size: 12px;
+  font-weight: normal;
+
+  color: #6f7378;
+
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+ion-popover {
+  --width: 75px !important;
+}
+
+@media screen and (max-width: 400px) {
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0px;
+  }
+}
